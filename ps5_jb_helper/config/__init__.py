@@ -153,7 +153,19 @@ DEFAULT_CONFIG = {
     },
     "payloads": {
         "required": ["OnionHEN.elf", "kstuff.elf", "shadowmountplus.elf", "ftpsrv-ps5.elf"],
-        "optional": ["elfldr-ps5-1360.elf", "kexp_2026_05_25.bin", "nanodns.elf"]
+        "optional": [
+            "elfldr-ps5-1360.elf",
+            "kexp_2026_05_25.bin",
+            "nanodns.elf",
+            "webfile-manager.elf",
+        ],
+        "registry": {
+            "webfile-manager.elf": {
+                "url": "https://github.com/owendswang/ps5-web-file-manager/releases/download/v1.14/web-file-mgr-v1.14.elf",
+                "sha256": None,
+                "group": "optional",
+            }
+        },
     },
     "firmware": {
         "min_version": "7.00",

@@ -8,5 +8,13 @@ if errorlevel 1 (
   pause
   exit /b 1
 )
-python ps5_jb_helper.py
+where PySide6 >nul 2>nul
+if errorlevel 1 (
+  echo The PySide6 GUI requires the PySide6 package (pip install ps5-jb-helper).
+  echo Falling back to the standard-library tkinter UI:
+  python ps5_jb_helper_main.py
+  pause
+  exit /b %ERRORLEVEL%
+)
+python ps5_jb_helper/gui/__main__.py
 if errorlevel 1 pause

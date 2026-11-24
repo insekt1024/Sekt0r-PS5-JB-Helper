@@ -3,12 +3,14 @@ import hashlib
 import shutil
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
+import logging
 from pathlib import Path
 from typing import Callable, Dict, List, Optional
 
 from ps5_jb_helper.config import load_config, DEFAULT_CONFIG
 from ps5_jb_helper.download import download_file, download_files_parallel, DownloadError
 from ps5_jb_helper.cert import ensure_cert, get_cert_paths
+from ps5_jb_helper.payloads import PayloadManager
 from ps5_jb_helper.utils import (
     verify_www, compute_required_files, create_manifest, ProgressTracker
 )
@@ -133,19 +135,42 @@ def download_payloads_parallel(
     log_func: Callable[[str, str], None],
     progress: Optional[Callable[[str, int, int], None]] = None,
 ) -> Dict[str, str]:
-    """Download optional payloads in parallel."""
+    """Download optional payloads in parallel via the payload manager.
+
+    Payloads are only installed when their URL is registered (admin-managed
+    payload lists). Returns {payload_name: local_path} for what was installed.
+    """
     optional = config.get("payloads", {}).get("optional", [])
     if not optional:
         return {}
 
-    urls = {}
-    sha256_map = {}
-    base_url = "https://github.com/ps5-payload-dev/payloads/releases/download/"
+    www_root = Path(www_root)
+    mgr = PayloadManager(www_root, log=logging.getLogger("ps5_jb_helper.payloads"))
+    installed: Dict[str, str] = {}
 
-    # Note: In practice, you'd have a manifest with URLs and hashes
-    # For now, we skip optional payloads as they don't have fixed URLs/hashes
-    log_func("Optional payloads not configured for auto-download")
-    return {}
+    # Build an in-memory registry from upstream URLs (ftpsrv has one; the rest
+    # come from the admin-managed registry file, see PayloadManager).
+    registry = dict(mgr._registry())
+    for name in optional:
+        upstream = config.get("upstream", {})
+        url = registry.get(name, {}).get("url")
+        if not url:
+            # Common GitHub release naming; URLs are always validated before
+            # download by the payload manager (registry purview).
+            url = (
+                f"https://github.com/ps5-payload-dev/payloads/releases/download/"
+                f"{name}/{name}"
+            )
+        registry[name] = {"url": url, "group": "optional"}
+
+    for name in optional:
+        try:
+            paths = mgr.ensure([name])
+            if paths:
+                installed[name] = str(paths[0])
+        except Exception as exc:  # noqa: BLE001
+            log_func(f"Failed to download {name}: {exc}")
+    return installed
 
 
 def check_updates(config: dict) -> Dict[str, bool]:

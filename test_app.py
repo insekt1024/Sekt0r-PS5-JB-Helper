@@ -111,14 +111,24 @@ def unit_paths():
         (tmp / "index.html").write_text("<html>WAK</html>")
         (tmp / "src" / "firmware.js").write_text("//fw")
         (tmp / "assets" / "index.css").write_text("body{}")
+
+        def same_path(a: Optional[Path], b: Path) -> bool:
+            """Compare two paths robustly (Windows short-name vs full-name)."""
+            if a is None:
+                return False
+            try:
+                return a.resolve() == b.resolve()
+            except OSError:
+                return str(a) == str(b)
+
         f, m = map_path("/document/en/ps5/", tmp)
-        check("path deep guide -> spa", m == "spa" and f == tmp / "index.html")
+        check("path deep guide -> spa", m == "spa" and same_path(f, tmp / "index.html"))
         f, m = map_path("/document/en/ps5/src/firmware.js", tmp)
-        check("path deep asset rewrite", m == "file" and f == tmp / "src" / "firmware.js")
+        check("path deep asset rewrite", m == "file" and same_path(f, tmp / "src" / "firmware.js"))
         f, m = map_path("/document/fr/ps5/sub/assets/index.css", tmp)
-        check("path deeper asset rewrite", m == "file" and f == tmp / "assets" / "index.css")
+        check("path deeper asset rewrite", m == "file" and same_path(f, tmp / "assets" / "index.css"))
         f, m = map_path("/src/firmware.js", tmp)
-        check("path root asset", m == "file" and f == tmp / "src" / "firmware.js")
+        check("path root asset", m == "file" and same_path(f, tmp / "src" / "firmware.js"))
         f, m = map_path("/missing.js", tmp)
         check("path missing js -> 404 (no SPA fallback)", m == "404")
         f, m = map_path("/missing.css", tmp)
@@ -128,7 +138,7 @@ def unit_paths():
         f, m = map_path("/%2e%2e/secret.txt", tmp)
         check("path encoded traversal blocked", m == "404")
         f, m = map_path("/index.html", tmp)
-        check("path explicit index", m == "file" and f == tmp / "index.html")
+        check("path explicit index", m == "file" and same_path(f, tmp / "index.html"))
         problems = verify_www(tmp, REQUIRED_FILES)
         check("verify_www flags incomplete tree", len(problems) > 0, f"{len(problems)} problems")
     finally:

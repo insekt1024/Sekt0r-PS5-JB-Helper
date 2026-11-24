@@ -32,6 +32,18 @@ FTPSRV_SHA256 = CFG["upstream"]["ftpsrv_sha256"]
 
 REQUIRED_FILES = compute_required_files(CFG)
 
+# Constants derived from CFG (mirror ps5_jb_helper.py for cross-module use).
+_NET = CFG["network"]
+GUIDE_DOMAINS = tuple(_NET["guide_domains"])
+BLOCK_DOMAINS = tuple(_NET["block_domains"])
+UPSTREAM_DNS = tuple(_NET["upstream_dns"])
+DNS_PORT = _NET["dns_port"]
+HTTP_PORT = _NET["http_port"]
+HTTPS_PORT = _NET["https_port"]
+STATIC_IP = _NET["static_ip"]
+STATIC_MASK = _NET["static_mask"]
+PS5_IP = _NET["ps5_ip"]
+
 
 __all__ = [
     "load_config", "DEFAULT_CONFIG", "validate_config", "save_config", "CFG",
@@ -47,6 +59,9 @@ __all__ = [
     "BASE", "WWW", "ASSETS", "MANIFEST", "LOG_FILE",
     "HOST_REPO", "HOST_REF", "FTPSRV_SHA256",
     "REQUIRED_FILES",
+    "GUIDE_DOMAINS", "BLOCK_DOMAINS", "UPSTREAM_DNS",
+    "DNS_PORT", "HTTP_PORT", "HTTPS_PORT",
+    "STATIC_IP", "STATIC_MASK", "PS5_IP",
 ]
 
 __version__ = "1.2.0"

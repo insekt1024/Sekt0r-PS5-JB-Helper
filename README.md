@@ -80,7 +80,7 @@ Full list in `config.json` → `firmware.supported` (60+ versions).
 ## Payloads Included
 
 | Payload | Purpose |
-|---------|---------|
+|---------|
 | **OnionHEN.elf** | Homebrew enabler (HEN) |
 | **kstuff.elf** | Kernel tools / debugging |
 | **shadowmountplus.elf** | Filesystem mount utilities |
@@ -88,8 +88,12 @@ Full list in `config.json` → `firmware.supported` (60+ versions).
 | elfldr-ps5-1360.elf | ELF loader (optional) |
 | kexp_2026_05_25.bin | Kernel exploit binary (optional) |
 | nanodns.elf | DNS payload (optional) |
+| webfile-manager.elf | Web file manager (owendswang/ps5-web-file-manager) for PS5 LAN file access |
 
-All verified via SHA-256 at download.
+Optional payloads are managed by the **payload manager** and downloadable
+via the UI (Download optional). Their source URL and SHA-256 are registered
+in `config/__init__.py` under `payloads.registry` (SHA-256 is validated at
+download unless left `null`).
 
 ---
 
@@ -152,12 +156,15 @@ ps5-jb-helper/
 
 ## Requirements
 
-- Python 3.9+ (tkinter included in standard install)
-- **Optional:** `cryptography` package for auto TLS cert generation
-  ```bash
-  pip install cryptography
-  ```
-  Without it, provide `assets/manuals.crt` + `manuals.key` manually.
+- Python 3.9+ (tkinter &amp; `cryptography` included by default)
+  - **Required by default:** `cryptography` for auto TLS cert generation.
+    ```bash
+    pip install -r requirements.txt
+    ```
+  - Without it, provide `assets/manuals.crt` + `manuals.key` manually.
+- `PySide6>=6.7` — default GUI toolkit (tkinter fallback still runs
+  `ps5_jb_helper_main.py` if PySide6 is missing).
+- `pooch` — payload/host-page downloads with checksums and retry.
 
 ---
 
