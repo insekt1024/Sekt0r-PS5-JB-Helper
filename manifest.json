@@ -1,0 +1,8 @@
+{
+  "host_repo": "arg0WAK/WAK1360-Relapse",
+  "host_ref": "b2398fd5bea116f990595e0a187ae94d8c6db43d",
+  "overlay": "ThatRetiredDude/ps5-relapse-selfhost@main",
+  "ftpsrv": "v0.21.1",
+  "ftpsrv_sha256": "7d4b31c83eae4e056580482a3a074e1db25922efc74ac1e439473b45d71a5938",
+  "downloaded_at": "2026-11-24 08:04:54"
+}

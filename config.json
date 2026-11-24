@@ -1,0 +1,95 @@
+{
+  "app": {
+    "name": "Sekt0r Auto Jailbreak Tool",
+    "version": "1.2.0",
+    "author": "Security Research",
+    "license": "MIT"
+  },
+  "upstream": {
+    "host_repo": "arg0WAK/WAK1360-Relapse",
+    "host_ref": "b2398fd5bea116f990595e0a187ae94d8c6db43d",
+    "overlay_repo": "ThatRetiredDude/ps5-relapse-selfhost",
+    "overlay_branch": "main",
+    "ftpsrv_url": "https://github.com/ps5-payload-dev/ftpsrv/releases/download/v0.21.1/ftpsrv-ps5.elf",
+    "ftpsrv_sha256": "7d4b31c83eae4e056580482a3a074e1db25922efc74ac1e439473b45d71a5938"
+  },
+  "network": {
+    "dns_port": 53,
+    "http_port": 80,
+    "https_port": 443,
+    "static_ip": "192.168.100.1",
+    "static_mask": "255.255.255.0",
+    "ps5_ip": "192.168.100.2",
+    "upstream_dns": ["1.1.1.1", "8.8.8.8"],
+    "guide_domains": [
+      "manuals.playstation.net",
+      "manual.playstation.net",
+      "doc.dl.playstation.net"
+    ],
+    "block_domains": [
+      "update.playstation.net",
+      "update.playstation.com",
+      "dservices.playstation.net",
+      "fms.playstation.net",
+      "pst-patch.playstation.net",
+      "sonyentertainmentnetwork.com",
+      "scea.com"
+    ],
+    "dns_rate_limit": 100,
+    "http_rate_limit": 50,
+    "https_rate_limit": 50
+  },
+  "payloads": {
+    "required": [
+      "OnionHEN.elf",
+      "kstuff.elf",
+      "shadowmountplus.elf",
+      "ftpsrv-ps5.elf"
+    ],
+    "optional": [
+      "elfldr-ps5-1360.elf",
+      "kexp_2026_05_25.bin",
+      "nanodns.elf"
+    ]
+  },
+  "firmware": {
+    "min_version": "7.00",
+    "max_version": "13.60",
+    "supported": [
+      "7.00", "7.01", "7.02", "7.10", "7.11", "7.20", "7.30", "7.40", "7.50", "7.51", "7.55", "7.60", "7.61",
+      "8.00", "8.01", "8.03", "8.10", "8.20", "8.21", "8.30", "8.40", "8.50", "8.51", "8.52", "8.60", "8.61",
+      "9.00", "9.03", "9.04", "9.10", "9.20", "9.30", "9.40", "9.50", "9.51", "9.60",
+      "10.00", "10.01", "10.02", "10.10", "10.20", "10.30", "10.40", "10.50", "10.51", "10.60", "10.61",
+      "11.00", "11.10", "11.20", "11.30", "11.40", "11.50", "11.51", "11.60",
+      "12.00", "12.02", "12.10", "12.20", "12.30", "12.40", "12.50", "12.60", "12.70",
+      "13.00", "13.10", "13.20", "13.30", "13.40", "13.42", "13.50", "13.60"
+    ]
+  },
+  "download": {
+    "timeout": 60,
+    "chunk_size": 65536,
+    "max_retries": 3,
+    "retry_delay": 2
+  },
+  "gui": {
+    "theme": "dark",
+    "window_size": "860x760",
+    "min_window_size": "760x640",
+    "remember_window": true,
+    "colors": {
+      "bg": "#101418",
+      "card": "#1a2129",
+      "fg": "#e5e7eb",
+      "accent": "#3b82f6",
+      "success": "#22c55e",
+      "warning": "#fbbf24",
+      "error": "#ef4444",
+      "muted": "#9ca3af"
+    }
+  },
+  "logging": {
+    "level": "INFO",
+    "format": "[%(asctime)s] %(levelname)s: %(message)s",
+    "max_lines": 1000
+  }
+}

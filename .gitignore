@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+
+# Build / standalone output
+build/
+dist/
+*.egg-info/
+*.exe
+
+# Runtime downloads (git-ignored)
+www/
+ps5_jb_helper.log
+
+# Auto-generated TLS certs
+assets/manuals.crt
+assets/manuals.key
+
+# Backups
+*.bak
+
+# OS
+.DS_Store
+Thumbs.db
