@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-PS5 Jailbreak Helper — self-host the Relapse exploit (firmware 7.00–13.60).
+SEKT0R AUTO JAILBREAK TOOLKIT — self-host the Relapse exploit (firmware 7.00–13.60).
 
 Downloads the public exploit host page from GitHub, then runs a local
 DNS + HTTP/HTTPS server so the PS5 User's Guide loads the exploit page
@@ -52,7 +52,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 
 # ─── Configuration ────────────────────────────────────────────────────────
 
-APP_NAME = "Sekt0r Auto Jailbreak Tool"
+APP_NAME = "SEKT0R AUTO JAILBREAK TOOLKIT"
 APP_VER = "1.2.0"
 
 def _get_base() -> Path:
@@ -755,7 +755,7 @@ def self_test(ip: str, dns_port: int = DNS_PORT, https_port: int = HTTPS_PORT) -
 
 STR = {
     "en": {
-        "title": "PS5 Jailbreak Helper",
+        "title": "SEKT0R AUTO JAILBREAK TOOLKIT",
         "subtitle": f"Relapse self-host · v{APP_VER} · firmware 7.00–13.60",
         "fw_warn": ("Supported firmware: 7.00 – 13.60 (Relapse). 14.00 and newer CANNOT be jailbroken "
                     "and the PS5 cannot be downgraded. Turn OFF automatic updates on the console."),

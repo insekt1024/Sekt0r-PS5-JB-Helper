@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Nuitka build script for PS5 Jailbreak Helper (tkinter standalone).
+Nuitka build script for SEKT0R AUTO JAILBREAK TOOLKIT (tkinter standalone).
 Builds a single-file Windows executable.
 """
 import subprocess
@@ -16,25 +16,26 @@ def build():
         sys.executable, "-m", "nuitka",
         "--onefile",
         "--windows-console-mode=hide",
-        "--product-name=Sekt0r Auto Jailbreak Tool",
+        "--product-name=SEKT0R AUTO JAILBREAK TOOLKIT",
         "--product-version=1.2.0",
         "--file-version=1.2.0",
-        "--file-description=PS5 Jailbreak Helper - Self-host Relapse exploit",
+        "--file-description=SEKT0R AUTO JAILBREAK TOOLKIT - Self-host Relapse exploit",
         "--copyright=MIT License - Security Research Only",
         "--assume-yes-for-downloads",
-        "--include-package=cryptography",
-        "--include-package=pooch",
-        # Data files to bundle
-        "--include-data-file=config.json=config.json",
-        "--include-data-dir=assets=assets",
-        "--include-data-dir=ps5_jb_helper/i18n=ps5_jb_helper/i18n",
-        # Optimizations
-        "--remove-output",
-        "--lto=yes",
-        # Output
-        "--output-dir=dist",
-        "--output-filename=Sekt0r-Auto-Jailbreak-Tool.exe",
-        "ps5_jb_helper.py",
+                "--enable-plugin=tk-inter",
+                "--tcl-library-dir=C:\\Users\\META PC\\AppData\\Local\\Programs\\Python\\Python314\\tcl",
+                "--tk-library-dir=C:\\Users\\META PC\\AppData\\Local\\Programs\\Python\\Python314\\tcl",
+                "--include-package=cryptography",
+                "--include-package=pooch",
+                # Data files to bundle
+                "--include-data-file=config.json=config.json",
+                "--include-data-dir=assets=assets",
+                # Optimizations (NO --lto=yes: Zig backend long-double math link errors)
+                "--remove-output",
+                # Output
+                "--output-dir=dist",
+                "--output-filename=SEKT0R-AUTO-JAILBREAK-TOOLKIT.exe",
+                "ps5_jb_helper.py",
     ]
 
     print("Running:", " ".join(cmd))

@@ -1,5 +1,5 @@
 @echo off
-rem PS5 Jailbreak Helper launcher
+rem SEKT0R AUTO JAILBREAK TOOLKIT launcher
 cd /d "%~dp0"
 where python >nul 2>nul
 if errorlevel 1 (

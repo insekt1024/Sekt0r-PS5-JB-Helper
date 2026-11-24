@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-PS5 Jailbreak Helper — self-host the Relapse exploit (firmware 7.00–13.60).
+SEKT0R AUTO JAILBREAK TOOLKIT — self-host the Relapse exploit (firmware 7.00–13.60).
 
 Downloads the public exploit host page from GitHub, then runs a local
 DNS + HTTP/HTTPS server so the PS5 User's Guide loads the exploit page
@@ -39,7 +39,7 @@ from ps5_jb_helper import (
 
 # ─── Constants ────────────────────────────────────────────────────────────
 
-APP_NAME = "Sekt0r Auto Jailbreak Tool"
+APP_NAME = "SEKT0R AUTO JAILBREAK TOOLKIT"
 APP_VER = "1.2.0"
 
 

@@ -1,4 +1,4 @@
-# Sekt0r Auto Jailbreak Tool
+# SEKT0R AUTO JAILBREAK TOOLKIT
 
 A self-contained, cross-platform tool to host the **Relapse exploit** (firmware 7.00–13.60) on your PC, so you can jailbreak your PS5 by simply connecting a LAN cable and entering a DNS address on the console.
 
