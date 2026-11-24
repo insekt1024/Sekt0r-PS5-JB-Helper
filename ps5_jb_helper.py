@@ -53,7 +53,7 @@ from typing import Any, Dict, List, Optional, Tuple, Union
 # ─── Configuration ────────────────────────────────────────────────────────
 
 APP_NAME = "Sekt0r Auto Jailbreak Tool"
-APP_VER = "1.1.0"
+APP_VER = "1.2.0"
 
 def _get_base() -> Path:
     """Get base directory for config/assets — works in both dev and frozen (PyInstaller) modes."""
@@ -812,64 +812,6 @@ STR = {
         "payload_status": "Status",
         "firmware_info": "Firmware 7.00–13.60 supported. Your PS5 must be on a supported version.",
     },
-    "fa": {
-        "title": "راهنمای جیلبریک PS5",
-        "subtitle": f"میزبانی محلی Relapse · نسخه {APP_VER} · فریمور ۷٫۰۰ تا ۱۳٫۶۰",
-        "fw_warn": ("فریمورهای پشتیبانی‌شده: ۷٫۰۰ تا ۱۳٫۶۰ (Relapse). فریمور ۱۴٫۰۰ و بالاتر قابل جیلبریک نیست "
-                    "و PS5 قابل دانگرید هم نیست. به‌روزرسانی خودکار کنسول را خاموش کنید."),
-        "adapter": "کارت شبکه (سمت کامپیوتر):",
-        "refresh": "بازخوانی",
-        "dns_label": "DNS اصلی که باید در PS5 وارد کنید",
-        "copy": "کپی",
-        "copied": "در کلیپ‌بورد کپی شد.",
-        "download": "۱ · دانلود / به‌روزرسانی فایل‌ها",
-        "start": "۲ · شروع سرور",
-        "stop": "توقف",
-        "verify": "تست خودکار",
-        "static_ip": "تنظیم IP ثابت (ادمین)",
-        "dhcp": "بازگردانی DHCP (ادمین)",
-        "firewall": "قواعد فایروال (ادمین)",
-        "files": "فایل‌ها", "dns": "DNS", "web": "وب",
-        "not_ready": "دانلود نشده", "ready": "آماده", "running": "در حال اجرا", "stopped": "متوقف",
-        "steps_title": "روی PS5",
-        "steps": (
-            "۱. کابل LAN را بین این کامپیوتر و PS5 وصل کنید (یا هر دو را به یک مودم وصل کنید).\n"
-            "۲. در PS5: تنظیمات → شبکه → راه‌اندازی اتصال اینترنت → LAN سیمی → تنظیمات پیشرفته.\n"
-            f"     • کابل مستقیم: اول اینجا «تنظیم IP ثابت» را بزنید، سپس در PS5 آی‌پی {PS5_IP}،\n"
-            f"       زیرشبکه {STATIC_MASK} و دروازه {STATIC_IP} را وارد کنید.\n"
-            "     • مودم مشترک: تنظیمات IP روی خودکار بماند.\n"
-            "۳. تنظیمات DNS → دستی → DNS اصلی: نشانی بالا · DNS دوم: 0.0.0.0.\n"
-            "۴. تنظیمات → راهنما و نکات… → راهنمای کاربر را باز کنید و هشدار گواهی را بپذیرید.\n"
-            "۵. صفحه WAK1360 باز می‌شود — START را بزنید. اگر گیر کرد، صفحه را دوباره بارگذاری کنید (WebKit گاهی چند تلاش لازم دارد).\n"
-            "۶. پس از موفقیت، از منوی PAYLOADS بارگذاری OnionHEN / kstuff / FTP Server را انجام دهید."
-        ),
-        "log": "گزارش",
-        "lang": "English",
-        "need_files": "اول فایل‌ها را دانلود کنید (مرحله ۱).",
-        "no_adapter": "کارت شبکه‌ای با آدرس IPv4 پیدا نشد.",
-        "started": "سرورها فعال شدند. DNS کنسول را روی {ip} بگذارید و راهنمای کاربر را باز کنید.",
-        "stopped_msg": "سرورها متوقف شدند.",
-        "bind_fail": "اتصال {what} به {ip}:{port} ممکن نشد — {err}",
-        "port_hint": "پورت ۵۳ معمولاً در اختیار ICS ویندوز (اشتراک اینترنت) است. ICS را خاموش کنید یا از حالت کابل مستقیم با IP ثابت استفاده کنید.",
-        "dl_ok": "دانلود کامل شد — حالا می‌توانید سرور را شروع کنید.",
-        "dl_fail": "دانلود ناموفق: {err}",
-        "test_running": "در حال اجرای تست خودکار …",
-        "test_pass": "تست خودکار موفق — سمت کامپیوتر آماده است. حالا PS5 را تنظیم کنید.",
-        "test_fail": "تست خودکار ناموفق — گزارش را ببینید. فایروال ویندوز (دکمه فایروال) و انتخاب کارت شبکه درست را بررسی کنید.",
-        "elev_ok": "درخواست دسترسی ادمین ارسال شد — پنجره UAC را تأیید کنید. {what}",
-        "elev_fail": "درخواست دسترسی ادمین ممکن نشد.",
-        "static_done": "درخواست IP ثابت: {alias} ← {ip}. «بازخوانی» را بزنید و آن را انتخاب کنید.",
-        "dhcp_done": "درخواست بازگردانی DHCP برای {alias}. سپس «بازخوانی» را بزنید.",
-        "fw_done": "درخواست قواعد فایروال برای UDP 53، TCP 80 و TCP 443 ارسال شد.",
-        "exit_hint": "با بستن برنامه، سرورها خودکار متوقف می‌شوند.",
-        "disclaimer": "فقط برای کنسول متعلق به خودتان · پژوهش امنیتی · بدون محتوای دزدی · مسئولیت استفاده با خودتان است.",
-        "cert_gen": "در حال تولید گواهی TLS…",
-        "cert_ok": "گواهی TLS آماده شد.",
-        "cert_fail": "تولید گواهی ناموفق (پکیج cryptography را نصب کنید یا manuals.crt/key را دستی فراهم کنید).",
-        "payloads_title": "پی‌لودها",
-        "payload_status": "وضعیت",
-        "firmware_info": "فریمور ۷٫۰۰ تا ۱۳٫۶۰ پشتیبانی می‌شود. PS5 شما باید روی نسخه پشتیبانی‌شده باشد.",
-    },
 }
 
 
@@ -895,7 +837,7 @@ class App:
 
     # -- i18n / style
     def t(self, key: str, **kw: Any) -> str:
-        s = STR[self.lang][key]
+        s = STR["en"][key]
         return s.format(**kw) if kw else s
 
     def _build_style(self) -> None:
@@ -940,13 +882,11 @@ class App:
         head = ttk.Frame(self.root); head.pack(fill="x", **pad)
         self.lbl_title = ttk.Label(head, text=self.t("title"), font=("Segoe UI", 16, "bold"))
         self.lbl_title.pack(side="left")
-        self.btn_lang = ttk.Button(head, text=self.t("lang"), width=10, command=self.toggle_lang)
-        self.btn_lang.pack(side="right")
         self.lbl_sub = ttk.Label(head, text=self.t("subtitle"), style="Dim.TLabel")
         self.lbl_sub.pack(side="left", padx=10)
 
         self.lbl_warn = tk.Label(self.root, text=self.t("fw_warn"), bg="#2a2010", fg=CFG["gui"]["colors"]["warning"],
-                                 font=("Segoe UI", 9), wraplength=820, justify="left", anchor="w", padx=10, pady=6)
+                                 font=("Segoe UI", 9), wraplength=820, padx=10, pady=6)
         self.lbl_warn.pack(fill="x", padx=14, pady=(2, 6))
 
         # Firmware info
@@ -1002,7 +942,7 @@ class App:
         steps = ttk.Labelframe(self.root, text=self.t("steps_title"))
         steps.pack(fill="x", padx=14, pady=6)
         self.lbl_steps = tk.Label(steps, text=self.t("steps"), bg=self.BG, fg=self.FG,
-                                  font=("Segoe UI", 9), justify="left", anchor="w", wraplength=820)
+                                  font=("Segoe UI", 9), wraplength=820)
         self.lbl_steps.pack(fill="x", padx=8, pady=4)
         self.steps_frame = steps
 
@@ -1018,33 +958,6 @@ class App:
 
         self.lbl_disc = ttk.Label(self.root, text=self.t("disclaimer"), style="Dim.TLabel", wraplength=820)
         self.lbl_disc.pack(fill="x", padx=14, pady=(0, 8))
-
-    def toggle_lang(self) -> None:
-        self.lang = "fa" if self.lang == "en" else "en"
-        fa = self.lang == "fa"
-        just = "right" if fa else "left"
-        self.root.title(self.t("title"))
-        self.lbl_title.configure(text=self.t("title"))
-        self.lbl_sub.configure(text=self.t("subtitle"))
-        self.btn_lang.configure(text=self.t("lang"))
-        self.lbl_warn.configure(text=self.t("fw_warn"), justify=just, anchor="e" if fa else "w")
-        self.lbl_adapter.configure(text=self.t("adapter"))
-        self.btn_refresh.configure(text=self.t("refresh"))
-        self.lbl_dns_caption.configure(text=self.t("dns_label"), anchor="e" if fa else "w")
-        self.btn_copy.configure(text=self.t("copy"))
-        self.btn_dl.configure(text=self.t("download"))
-        self.btn_start.configure(text=self.t("start"))
-        self.btn_stop.configure(text=self.t("stop"))
-        self.btn_test.configure(text=self.t("verify"))
-        self.btn_static.configure(text=self.t("static_ip"))
-        self.btn_dhcp.configure(text=self.t("dhcp"))
-        self.btn_fw.configure(text=self.t("firewall"))
-        self.steps_frame.configure(text=self.t("steps_title"))
-        self.lbl_steps.configure(text=self.t("steps"), justify=just, anchor="e" if fa else "w")
-        self.logf.configure(text=self.t("log"))
-        self.lbl_disc.configure(text=self.t("disclaimer"))
-        self.refresh_files_status()
-        self.refresh_server_status()
 
     # -- helpers
     def log(self, msg: str, level: str = "info") -> None:
